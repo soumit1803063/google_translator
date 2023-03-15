@@ -1,5 +1,3 @@
-import os
-import sys
 from functools import partial
 from tkinter import *
 from googletrans import Translator,LANGUAGES
