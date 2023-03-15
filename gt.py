@@ -1,13 +1,7 @@
-import csv
-import datetime
-import json
 import os
 import sys
 from functools import partial
 from tkinter import *
-from tkinter import messagebox
-from tkinter.filedialog import askopenfilename
-
 from googletrans import Translator,LANGUAGES
 
 
