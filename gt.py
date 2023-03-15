@@ -14,7 +14,7 @@ from googletrans import Translator,LANGUAGES
 
 class TranslatorClass:
     def __init__(self, root):
-        self.from_lang="detect language"
+        self.from_lang='d'
         self.to_lang="en"
 
         self.languages=LANGUAGES
@@ -56,11 +56,19 @@ class TranslatorClass:
 
     
     def do_translation(self,from_Textbox,to_textbox):
+        source=self.from_lang
         destination=self.to_lang
+
         t=Translator()
         from_text =from_Textbox.get("1.0", 'end')
-        to_text=t.translate(from_text,dest=destination).text
-        print(destination)
+        to_text=""
+        if source == 'd':
+            # print(1,"-->",end="")
+            to_text=t.translate(from_text,dest=destination).text
+        else:
+            # print(2,"-->",end="")
+            to_text=t.translate(from_text,src=source,dest=destination).text    
+        # print(source,",",destination)
         to_textbox.delete("1.0",'end')
         to_textbox.insert('1.0', to_text)
 
@@ -103,10 +111,13 @@ class TranslatorClass:
     def select_language(self,selected_lang_button,selected_lang,lang_frame,Type):
         selected_lang_button['text']=selected_lang
 
+        temp=selected_lang
+        selected_lang='d'
         for k, v in self.languages.items():
-                if v == selected_lang:
+                if v == temp:
                     selected_lang=k
                     break
+   
 
         if Type == 0:
             self.from_lang=selected_lang
